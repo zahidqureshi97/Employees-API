@@ -54,4 +54,14 @@ router.delete('/:employeeID', async (req, res) => {
 	}
 });
 
+//Get employee by ID
+router.get('/:employeeID', async (req, res) => {
+	try {
+		const employee = await Employee.findById(req.params.employeeID);
+		res.json(employee);
+	} catch (err) {
+		res.json({ message: err });
+	}
+});
+
 module.exports = router;
